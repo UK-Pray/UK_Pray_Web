@@ -1,0 +1,59 @@
+<main class="mt-5 mb-5 container d-flex justify-content-center">
+    <div class="w-75 p-4 p-md-5 mb-4 text-dark rounded bg-transparent border border-dark">
+        <div class="col-md-6 px-0">
+        <h1 class="display-4 font-italic mb-4"><strong>Sign Up</strong></h1>
+        </div>
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+            <div class="row mb-4">
+                <label for="firstName lastName">Name</label>
+                <div class="col">
+                  <input name="firstName" id="firstName" type="text" class="form-control" placeholder="First name" 
+                        required [(ngModel)]="prayerWarrior.firstname" #firstnamefield="ngModel" [class.fieldError]="form.submitted && firstnamefield.invalid">
+                  <div [hidden]="!form.submitted || firstnamefield.valid" class="alert alert-danger">Missing first name</div>  
+                </div>
+                <div class="col">
+                  <input name="lastName" id="lastName" type="text" class="form-control" placeholder="Last name"
+                        required [(ngModel)]="prayerWarrior.lastname" #lastnamefield="ngModel" [class.fieldError]="form.submitted && lastnamefield.invalid">
+                        <div [hidden]="!form.submitted || lastnamefield.valid" class="alert alert-danger">Missing last name</div>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="example@email.com"
+                        required [(ngModel)]="prayerWarrior.email" #emailfield="ngModel" email [class.fieldError]="form.submitted && emailfield.invalid">
+                <div [hidden]="!form.submitted || emailfield.valid" class="alert alert-danger">Missing email</div>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="church">Church</label>
+                <input name="church" type="text" class="form-control" id="church" placeholder="Intersect Church, Grace Pointe, The Refuge, Ignite, Trademark, _________ City Church, etc."
+                        required [(ngModel)]="prayerWarrior.church" #churchfield="ngModel" [class.fieldError]="form.submitted && churchfield.invalid">
+                <div [hidden]="!form.submitted || churchfield.valid" class="alert alert-danger">Missing church name</div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="form-group col-md-8">
+                  <label for="city">City</label>
+                  <input type="text" class="form-control" id="city" name="city" placeholder="New Jerusalem"
+                        required [(ngModel)]="prayerWarrior.city" #cityfield="ngModel" [class.fieldError]="form.submitted && cityfield.invalid">
+                  <div [hidden]="!form.submitted || cityfield.valid" class="alert alert-danger">Missing city</div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="state">State</label>
+                  <select id="state" name="state" class="form-select"
+                        required [(ngModel)]="prayerWarrior.state" #statefield="ngModel" [class.fieldError]="form.submitted">
+                    <option *ngFor="let state of states | async">{{ state }}</option>
+                  </select>
+                  <div [hidden]="!form.submitted || statefield.valid" class="alert alert-danger">Missing stae</div>
+                </div>
+            </div>
+
+            <br>
+            <button class="btn btn-primary">Send</button>
+        </form>
+    </div>
+    
+</main><!-- /.container -->
