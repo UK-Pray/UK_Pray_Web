@@ -23,6 +23,6 @@ export class DataService {
   }
 
   postPrayerWarriorForm(prayerWarrior: PrayerWarrior) : Observable<any> {
-    return this.http.post("http://localhost:8080/sendmail/user", prayerWarrior);
+    return this.http.post("https://notification-service-cflo5hg6va-uc.a.run.app/notification/prayer-partner", prayerWarrior);
   }
 }

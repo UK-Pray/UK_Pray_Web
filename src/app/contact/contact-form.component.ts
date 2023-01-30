@@ -21,7 +21,6 @@ export class ContactFormComponent implements OnInit {
     state: ""
   };
 
-  password = '1234567812345678';
 
   prayerWarrior: PrayerWarrior = { ...this.originalPrayerWarrior };
   sendPrayerWarrior: PrayerWarrior = { ...this.originalPrayerWarrior };
@@ -35,10 +34,6 @@ export class ContactFormComponent implements OnInit {
     this.states = this.dataService.getStates();
   }
 
-  encrypt(message: string) {
-    return CryptoJS.AES.encrypt(message.trim(), this.password.trim()).toString();
-  }
-
   onHttpError(errorResponse: any) {
     console.log("error", errorResponse);
     this.postError = true;
@@ -46,18 +41,11 @@ export class ContactFormComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    this.sendPrayerWarrior.firstname = this.encrypt(this.prayerWarrior.firstname);
-    this.sendPrayerWarrior.lastname = this.encrypt(this.prayerWarrior.lastname);
-    this.sendPrayerWarrior.email = this.encrypt(this.prayerWarrior.email);
-    this.sendPrayerWarrior.church = this.encrypt(this.prayerWarrior.church);
-    this.sendPrayerWarrior.city = this.prayerWarrior.city;
-    this.sendPrayerWarrior.state = this.prayerWarrior.state;
     console.log(this.sendPrayerWarrior);
     
     if(form.valid) {
       this.dataService.postPrayerWarriorForm(this.sendPrayerWarrior).subscribe(
-        result => console.log("Success", result),
-        error => this.onHttpError(error)
+        {complete: console.info}
       );
     }else{
       this.postError = true;
