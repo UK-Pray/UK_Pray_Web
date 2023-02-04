@@ -1,6 +1,6 @@
 export interface PrayerWarrior {
-    firstname: string,
-    lastname: string,
+    firstName: string,
+    lastName: string,
     email: string,
     church: string,
     city: string,

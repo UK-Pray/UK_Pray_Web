@@ -9,12 +9,12 @@
                 <label for="firstName lastName">Name</label>
                 <div class="col">
                   <input name="firstName" id="firstName" type="text" class="form-control" placeholder="First name" 
-                        required [(ngModel)]="prayerWarrior.firstname" #firstnamefield="ngModel" [class.fieldError]="form.submitted && firstnamefield.invalid">
+                        required [(ngModel)]="prayerWarrior.firstName" #firstnamefield="ngModel" [class.fieldError]="form.submitted && firstnamefield.invalid">
                   <div [hidden]="!form.submitted || firstnamefield.valid" class="alert alert-danger">Missing first name</div>  
                 </div>
                 <div class="col">
                   <input name="lastName" id="lastName" type="text" class="form-control" placeholder="Last name"
-                        required [(ngModel)]="prayerWarrior.lastname" #lastnamefield="ngModel" [class.fieldError]="form.submitted && lastnamefield.invalid">
+                        required [(ngModel)]="prayerWarrior.lastName" #lastnamefield="ngModel" [class.fieldError]="form.submitted && lastnamefield.invalid">
                         <div [hidden]="!form.submitted || lastnamefield.valid" class="alert alert-danger">Missing last name</div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                         required [(ngModel)]="prayerWarrior.state" #statefield="ngModel" [class.fieldError]="form.submitted">
                     <option *ngFor="let state of states | async">{{ state }}</option>
                   </select>
-                  <div [hidden]="!form.submitted || statefield.valid" class="alert alert-danger">Missing stae</div>
+                  <div [hidden]="!form.submitted || statefield.valid" class="alert alert-danger">Missing state</div>
                 </div>
             </div>
 
