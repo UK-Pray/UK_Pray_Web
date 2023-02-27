@@ -1,5 +1,5 @@
 .image-contain {
-    background-image: url("/assets/images/Memorial-Hall-tint.jpg");
+    background-image: url("/assets/images/willyT.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -7,5 +7,11 @@
 
 h1, h2, h3, h4, h5, h6 {
     font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+}
+
+.information-sections {
+    font-size: 18px;
+    line-height: 2;
+    margin-bottom: 10px;
 }
 
