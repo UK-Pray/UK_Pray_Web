@@ -13,8 +13,8 @@ import * as CryptoJS from 'crypto-js'
 export class ContactFormComponent implements OnInit {
 
   originalPrayerWarrior: PrayerWarrior = {
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     email: "",
     church: "",
     city: "",
@@ -41,12 +41,12 @@ export class ContactFormComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    console.log(this.sendPrayerWarrior);
+    console.log(this.prayerWarrior);
     
     if(form.valid) {
-      this.dataService.postPrayerWarriorForm(this.sendPrayerWarrior).subscribe(
-        {complete: console.info}
-      );
+      this.dataService.postPrayerWarriorForm(this.prayerWarrior).subscribe(x => {
+        console.log('Successfully Emailed')
+      });
     }else{
       this.postError = true;
       this.postErrorMessage = "Fix the above Errors";

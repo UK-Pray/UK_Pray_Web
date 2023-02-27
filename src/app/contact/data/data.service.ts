@@ -8,7 +8,19 @@ import { PrayerWarrior } from './prayer-warrior';
 })
 export class DataService {
 
-  constructor(private http: HttpClient) { }
+  private root: string;
+  private corsHeaders: Headers;
+
+  constructor(private http: HttpClient) { 
+    this.root = 'https://notification-service.ukpray.com';
+    this.corsHeaders = new Headers({
+    'Access-Control-Allow-Origin': "https://ukpray.com",
+    "Access-Control-Allow-Credentials": "true",
+    "Access-Control-Expose-Headers": "Set-Cookie",
+    "Access-Control-Allow-Headers": "Content-Type, x-xsrf-token, X-Requested-With, Accept, Expires, Last-Modified, Cache-Control",
+    "Access-Control-Allow-Methods": "GET, POST",
+
+  });}
 
   getStates(): Observable<string[]> {
     return of([
@@ -22,7 +34,9 @@ export class DataService {
     ]);
   }
 
+
   postPrayerWarriorForm(prayerWarrior: PrayerWarrior) : Observable<any> {
-    return this.http.post("https://notification-service.ukpray.com/notification/prayer-partner", prayerWarrior);
+
+    return this.http.post("https://notification-service.ukpray.com/notification/prayer-partner", prayerWarrior)
   }
 }

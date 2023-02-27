@@ -33,7 +33,7 @@ import { ContactFormComponent } from './contact/contact-form.component';
       { path: 'signup', component: ContactFormComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'home', pathMatch: 'full' } // change to 404 in future
-    ])
+    ], {useHash: true})
   ],
   providers: [],
   bootstrap: [AppComponent]
