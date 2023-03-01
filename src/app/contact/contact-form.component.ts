@@ -46,10 +46,8 @@ export class ContactFormComponent implements OnInit {
     
     if(form.valid) {
       this.dataService.postPrayerWarriorForm(this.prayerWarrior).subscribe((res) => {
-        if (res.status ==  200) {
-          console.log(res);
-          this.postSuccess = true;
-        }
+        console.log("Successfully sent email.");
+        this.postSuccess = true;
     
       }, (err) => {
         alert("There was an issue from our end. Try again later.");
