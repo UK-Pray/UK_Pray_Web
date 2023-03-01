@@ -24,7 +24,6 @@
                 <input type="email" class="form-control" id="email" name="email" placeholder="example@email.com"
                         required [(ngModel)]="prayerWarrior.email" #emailfield="ngModel" email [class.fieldError]="form.submitted && emailfield.invalid">
                 <div [hidden]="!form.submitted || emailfield.valid" class="alert alert-danger">Missing email</div>
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
 
             <div class="form-group mb-4">
