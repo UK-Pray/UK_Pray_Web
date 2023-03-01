@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { DataService } from './data/data.service';
 import { PrayerWarrior } from './data/prayer-warrior';
-import * as CryptoJS from 'crypto-js'
 
 @Component({
   selector: 'pm-contact-form',
@@ -24,6 +23,8 @@ export class ContactFormComponent implements OnInit {
 
   prayerWarrior: PrayerWarrior = { ...this.originalPrayerWarrior };
   sendPrayerWarrior: PrayerWarrior = { ...this.originalPrayerWarrior };
+  postSuccess = false;
+  postFailure = false;
   postError = false;
   postErrorMessage = '';
   states: Observable<string[]> | undefined;
@@ -44,8 +45,15 @@ export class ContactFormComponent implements OnInit {
     console.log(this.prayerWarrior);
     
     if(form.valid) {
-      this.dataService.postPrayerWarriorForm(this.prayerWarrior).subscribe(x => {
-        console.log('Successfully Emailed')
+      this.dataService.postPrayerWarriorForm(this.prayerWarrior).subscribe((res) => {
+        if (res.status ==  200) {
+          console.log(res);
+          this.postSuccess = true;
+        }
+    
+      }, (err) => {
+        alert("There was an issue from our end. Try again later.");
+        this.postFailure = true;
       });
     }else{
       this.postError = true;

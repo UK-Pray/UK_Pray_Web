@@ -52,7 +52,11 @@
             </div>
 
             <br>
-            <button class="btn btn-primary">Send</button>
+            <div>
+              <button class="btn btn-primary">Send</button>
+              <div [hidden]="!postSuccess" class="alert alert-success">Success, check your email</div>
+              <div [hidden]="!postError || postSuccess" class="alert alert-danger">Failed to submit</div>
+            </div>
         </form>
     </div>
     
