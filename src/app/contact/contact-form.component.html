@@ -57,6 +57,7 @@
               <div [hidden]="!postError || postSuccess" class="alert alert-danger">Failed to submit</div>
             </div>
         </form>
+        <small [hidden]="!form.submitted || postSuccess || postError" class="form-text text-muted">Please Wait for submit message...</small><br>
         <small id="emailHelp" class="form-text text-muted">Contact ukpray@gmail.com if you would like your info removed from our database.</small>
     </div>
     
