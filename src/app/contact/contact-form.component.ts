@@ -51,6 +51,7 @@ export class ContactFormComponent implements OnInit {
     
       }, (err) => {
         alert("There was an issue from our end. Try again later.");
+        console.log(err);
         this.postFailure = true;
       });
     }else{
